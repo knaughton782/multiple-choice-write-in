@@ -230,6 +230,10 @@
             nextScenario.setAttribute('tabindex', '-1');
             nextScenario.focus();
             nextScenario.scrollIntoView({ behavior: "smooth", block: "start" });
+            // Force scroll for Canvas LMS mobile app
+            setTimeout(() => {
+                window.scrollTo({ top: nextScenario.offsetTop, behavior: "smooth" });
+            }, 100);
         }
         function saveAnswer(id) {
             const textarea = document.querySelector(`#${id}-write`);
@@ -285,6 +289,10 @@
                 visibleScenario.setAttribute('tabindex', '-1');
                 visibleScenario.focus();
                 visibleScenario.scrollIntoView({ behavior: "smooth", block: "start" });
+                // Force scroll for Canvas LMS mobile app
+                setTimeout(() => {
+                    window.scrollTo({ top: visibleScenario.offsetTop, behavior: "smooth" });
+                }, 100);
             }
         }
     </script>
