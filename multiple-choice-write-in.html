@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Scenario Interaction</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            line-height: 1.6;
+            padding: 1em;
+            max-width: 800px;
+            margin: auto;
+        }
+
+        h2 {
+            font-weight: bold;
+            color: #024890;
+            border-bottom: 1px solid !important;
+        }
+
+        fieldset {
+            border-radius: 5px;
+        }
+
+        .scenario {
+            margin-bottom: 2em;
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 2em;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .choices label {
+            display: block;
+            margin: 0.5em 0;
+        }
+
+        textarea {
+            width: 100%;
+            height: 100px;
+            margin-top: 1em;
+        }
+
+        button {
+            margin-top: 1em;
+            background-color: #024890;
+            border-radius: 4px;
+            border: none;
+            padding: 0.5em 1em;
+            cursor: pointer;
+            color: #fff;
+            font-size: 1em;
+            line-height: 1.5em !important;
+        }
+
+        .feedback {
+            background-color: #eef9f1;
+            border-left: 4px solid #2e8540;
+            padding: 1em;
+            margin-top: 1em;
+            border-radius: 4px;
+        }
+
+        .next-button {
+            margin-top: 1.5em;
+            display: block;
+        }
+
+        @media (max-width: 600px) {
+            body {
+                padding: 1em;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="scenario" id="scenario1">
+        <h2>Scenario 1</h2>
+        <p>
+            You are coaching a new employee who wants to improve their presentation skills. They have an important meeting coming up in two weeks, where they have to present their project proposal to the senior management team. They are feeling nervous and unsure about how to prepare and deliver an effective presentation. Which coaching model would you use?
+        </p>
+
+        <form aria-labelledby="scenario1">
+            <fieldset class="choices">
+                <legend><strong>Select the correct model:</strong></legend>
+                <label><input type="radio" name="q1" value="A"> A: CLEAR</label>
+                <label><input type="radio" name="q1" value="B"> B: GROW</label>
+                <label><input type="radio" name="q1" value="C"> C: OSCAR</label>
+            </fieldset>
+            <button type="button" onclick="checkAnswer('scenario1')">Submit Answer</button>
+        </form>
+
+        <div class="feedback hidden" id="scenario1-answer">
+            <strong>Correct Answer: GROW</strong>
+            <p>
+                The GROW model stands for Goal, Reality, Options, and Will. This model helps the coachee to clarify their desired outcome, assess their current situation, explore possible solutions, and commit to an action plan.
+            </p>
+            <label for="scenario1-write">What questions would you ask at each stage of the model?</label>
+            <textarea id="scenario1-write" aria-label="Your questions" placeholder="Write your questions here and then click submit." oninput="saveAnswer('scenario1')"></textarea>
+            <button type="button" onclick="showModelQuestions('scenario1')">Submit Response</button>
+        </div>
+
+        <div class="feedback hidden" id="scenario1-model">
+            <strong>Suggested Grow Model Questions:</strong>
+            <ul>
+                <li><strong>Goal:</strong> What is your goal for this presentation? What do you want to achieve? How will you know that you have achieved it? How specific, measurable, achievable, realistic, and time-bound is your goal?</li>
+                <li><strong>Reality:</strong> What is your current level of presentation skills? What are your strengths and areas for improvement? How confident are you in delivering a presentation to the senior management team? What challenges or obstacles do you anticipate?</li>
+                <li><strong>Options:</strong> What possible ways could you prepare and deliver an effective presentation? What resources or support do you have or need? What are the pros and cons of each option? How feasible and suitable are they for your goal?</li>
+                <li><strong>Will:</strong> What option or options do you choose to pursue? What specific actions will you take to implement your chosen option? When will you take these actions? How will you monitor your progress and evaluate your results? How committed are you to achieving your goal?</li>
+            </ul>
+            <button class="next-button" onclick="showNext('scenario2')">Next Scenario</button>
+        </div>
+    </div>
+    <!-- -------------------------------------------------------------------- -->
+    <div class="scenario hidden" id="scenario2">
+        <h2>Scenario 2</h2>
+        <p>You are coaching a team leader struggling with managing their workload and prioritizing their tasks. They have multiple deadlines, conflicting demands, and limited resources. They often feel overwhelmed and stressed and have difficulty delegating and saying no. Which coaching model would you use?
+        </p>
+        <form aria-labelledby="scenario2">
+            <fieldset class="choices">
+                <legend><strong>Select the correct model:</strong></legend>
+                <label><input type="radio" name="q2" value="A"> A: CLEAR</label>
+                <label><input type="radio" name="q2" value="B"> B: GROW</label>
+                <label><input type="radio" name="q2" value="C"> C: OSCAR</label>
+            </fieldset>
+            <button type="button" onclick="checkAnswer('scenario2')">Submit Answer</button>
+        </form>
+
+        <div class="feedback hidden" id="scenario2-answer">
+            <strong>Correct Answer: CLEAR</strong>
+            <p>
+                The CLEAR model stands for Contracting, Listening, Exploring, Action, and Review. This model helps the coachee to establish a clear and mutual agreement on the coaching process, express their thoughts and feelings, examine their situation and options, decide on a course of action, and reflect on the outcomes and learning.
+            </p>
+            <label for="scenario2-write">What questions would you ask at each stage of the model?</label>
+            <textarea id="scenario2-write" aria-label="Your questions" placeholder="Write your questions here and then click submit." oninput="saveAnswer('scenario2')"></textarea>
+            <button type="button" onclick="showModelQuestions('scenario2')">Submit Response</button>
+        </div>
+
+        <div class="feedback hidden" id="scenario2-model">
+            <strong>Suggested CLEAR Model Questions:</strong>
+            <ul>
+                <li><strong>Contracting:</strong> What is the purpose and scope of this coaching session? What are your expectations and goals? How will we measure your success? What are the ground rules and boundaries of our coaching relationship?</li>
+                <li><strong>Listening:</strong> How are you feeling about your workload and tasks? What are the main challenges or issues that you are facing? How do they affect you and your team? What have you tried so far to cope or resolve them?</li>
+                <li><strong>Exploring:</strong> What are the root causes or factors that contribute to your workload and task management problems? What are your assumptions or beliefs about your role and responsibilities? How do they help or hinder you? What are some alternative perspectives or approaches that you could consider?</li>
+                <li><strong>Action:</strong> What possible solutions or strategies could you use to manage your workload and tasks more effectively? What are the benefits and risks of each option? How aligned are they with your goals and values? What option or options do you choose to implement?</li>
+                <li><strong>Review:</strong> What are the results or outcomes of your chosen actions? How do they compare with your expectations and goals? What have you learned from this experience? How can you apply what you have learned to future situations?</li>
+            </ul>
+            <button class="next-button" onclick="showNext('scenario3')">Next Scenario</button>
+        </div>
+    </div>
+    <!-- -------------------------------------------------------------------- -->
+
+    <div class="scenario hidden" id="scenario3">
+        <h2>Scenario 3</h2>
+        <p>You are coaching a colleague who wants to pursue a career change within the organization. They have been working in the same role for five years, and they are looking for new opportunities and challenges. They have identified a few potential positions that interest them, but they are not sure how to approach the application process and showcase their transferable skills. Which coaching model would you use?</p>
+        <form aria-labelledby="scenario3">
+            <fieldset class="choices">
+                <legend><strong>Select the correct model:</strong></legend>
+                <label><input type="radio" name="q3" value="A"> A: CLEAR</label>
+                <label><input type="radio" name="q3" value="B"> B: GROW</label>
+                <label><input type="radio" name="q3" value="C"> C: OSCAR</label>
+            </fieldset>
+            <button type="button" onclick="checkAnswer('scenario3')">Submit Answer</button>
+        </form>
+
+        <div class="feedback hidden" id="scenario3-answer">
+            <strong>Correct Answer: OSCAR</strong>
+            <p>The OSCAR model stands for Outcome, Situation, Choices, Actions, and Review. This model helps the coachee to define their desired outcome, understand their current situation, generate and evaluate choices, plan and execute actions, and review and celebrate achievements.</p>
+            <label for="scenario3-write">What questions would you ask at each stage of the model?</label>
+            <textarea id="scenario3-write" aria-label="Your questions" placeholder="Write your questions here and then click submit." oninput="saveAnswer('scenario3')"></textarea>
+            <button type="button" onclick="showModelQuestions('scenario3')">Submit Response</button>
+        </div>
+
+        <div class="feedback hidden" id="scenario3-model">
+            <strong>Suggested OSCAR Model Questions:</strong>
+            <ul>
+                <li><strong>Outcome:</strong> What is your desired outcome for your career change? What are the specific positions that you are interested in and why? How do they align with your skills, interests, values, and aspirations? How will you know that you have achieved your outcome?</li>
+                <li><strong>Situation:</strong> What is the current situation in your role and organization? What are the opportunities and challenges that you face? How satisfied are you with your current role and career path? What are the gaps or areas for development that you need to address?</li>
+                <li><strong>Choices:</strong> What are some possible choices that you have to pursue your career change? How realistic and attractive are they? What are the criteria that you use to evaluate your choices? How confident are you in making a decision?</li>
+                <li><strong>Actions:</strong> What are the specific actions that you need to take to apply for your chosen positions? How will you prepare your resume, cover letter, and portfolio? How will you demonstrate your transferable skills and competencies? How will you handle the interview and negotiation process?</li>
+                <li><strong>Review:</strong> What are the outcomes or results of your actions? How do they match with your desired outcome? What feedback or learning have you received? How will you celebrate your achievements or cope with setbacks?</li>
+            </ul>
+            <button class="next-button" onclick="resetActivity()">Redo Activity</button>
+        </div>
+    </div>
+
+    <script>
+        function checkAnswer(id) {
+            const scenario = document.getElementById(id);
+            const radios = scenario.querySelectorAll('input[type=radio]');
+            let selected = null;
+            radios.forEach(radio => {
+                if (radio.checked) selected = radio.value;
+            });
+
+            if (!selected) {
+                alert("Please select an answer.");
+                return;
+            }
+
+            scenario.querySelector("#" + id + "-answer").classList.remove("hidden");
+        }
+
+        function showModelQuestions(id) {
+            const scenario = document.getElementById(id);
+            const textarea = scenario.querySelector("textarea");
+            if (!textarea.value.trim()) {
+                alert("Please write your questions before submitting.");
+                return;
+            }
+            // textarea.value = ""; // don't clear it so the response persists
+            scenario.querySelector("#" + id + "-model").classList.remove("hidden");
+            scenario.querySelector(".next-button").classList.remove("hidden");
+        }
+
+        function showNext(nextId) {
+            const currentScenario = document.querySelector('.scenario:not(.hidden)');
+            if (currentScenario) {
+                const currentId = currentScenario.id;
+                localStorage.removeItem(`${currentId}-answer`);
+                currentScenario.classList.add('hidden');
+            }
+            document.getElementById(nextId).classList.remove("hidden");
+            document.getElementById(nextId).scrollIntoView({ behavior: "smooth" });
+        }
+        function saveAnswer(id) {
+            const textarea = document.querySelector(`#${id}-write`);
+            localStorage.setItem(`${id}-answer`, textarea.value);
+        }
+
+        function loadAnswer(id) {
+            const saved = localStorage.getItem(`${id}-answer`);
+            if (saved) {
+                document.querySelector(`#${id}-write`).value = saved;
+            }
+        }
+
+        window.addEventListener("DOMContentLoaded", () => {
+            ["scenario1", "scenario2", "scenario3"].forEach(loadAnswer);
+        });
+
+        function resetActivity() {
+            // Remove all localStorage keys related to the answers
+            ["scenario1", "scenario2", "scenario3"].forEach(function(id) {
+                localStorage.removeItem(`${id}-answer`);
+            });
+
+            // Hide all scenarios except the first
+            document.querySelectorAll('.scenario').forEach(function(scen, idx) {
+                if (idx === 0) {
+                    scen.classList.remove('hidden');
+                } else {
+                    scen.classList.add('hidden');
+                }
+            });
+
+            // Clear all textareas
+            document.querySelectorAll('textarea').forEach(function(ta) {
+                ta.value = '';
+            });
+
+            // Hide model and answer feedback sections
+            ["scenario1", "scenario2", "scenario3"].forEach(function(id) {
+                var ans = document.getElementById(id + "-answer");
+                var model = document.getElementById(id + "-model");
+                if (ans) ans.classList.add("hidden");
+                if (model) model.classList.add("hidden");
+            });
+
+            // Unselect all radio buttons
+            document.querySelectorAll('input[type=radio]').forEach(function(radio) {
+                radio.checked = false;
+            });
+            // Scroll to the visible scenario
+            const visibleScenario = document.querySelector('.scenario:not(.hidden)');
+            if (visibleScenario) {
+                visibleScenario.scrollIntoView({ behavior: "smooth" });
+            }
+        }
+    </script>
+</body>
+
+</html>
