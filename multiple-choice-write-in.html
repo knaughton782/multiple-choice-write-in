@@ -225,8 +225,11 @@
                 localStorage.removeItem(`${currentId}-answer`);
                 currentScenario.classList.add('hidden');
             }
-            document.getElementById(nextId).classList.remove("hidden");
-            document.getElementById(nextId).scrollIntoView({ behavior: "smooth" });
+            const nextScenario = document.getElementById(nextId);
+            nextScenario.classList.remove("hidden");
+            nextScenario.setAttribute('tabindex', '-1');
+            nextScenario.focus();
+            nextScenario.scrollIntoView({ behavior: "smooth", block: "start" });
         }
         function saveAnswer(id) {
             const textarea = document.querySelector(`#${id}-write`);
@@ -279,7 +282,9 @@
             // Scroll to the visible scenario
             const visibleScenario = document.querySelector('.scenario:not(.hidden)');
             if (visibleScenario) {
-                visibleScenario.scrollIntoView({ behavior: "smooth" });
+                visibleScenario.setAttribute('tabindex', '-1');
+                visibleScenario.focus();
+                visibleScenario.scrollIntoView({ behavior: "smooth", block: "start" });
             }
         }
     </script>
